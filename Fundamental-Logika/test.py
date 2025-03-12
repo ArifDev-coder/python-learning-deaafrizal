@@ -36,7 +36,16 @@
 
 # print(glass_order)
 
-lots_of_glasses = 5
-glass_number = " ".join([str(i).rjust(3) for i in range(1, lots_of_glasses + 1)])
+# lots_of_glasses = 5
+# glass_number = " ".join([str(i).rjust(3) for i in range(1, lots_of_glasses + 1)])
 
-print(glass_number)
+# print(glass_number)
+
+
+
+
+
+
+
+
+

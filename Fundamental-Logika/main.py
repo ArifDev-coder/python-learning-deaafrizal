@@ -9,14 +9,13 @@ print("*" * 5, name_title, "*" * 5)
 print("*" *(len(name_title)+12))
 
 retry = True
-
 while retry:
     try:
         choose_level = int(input("Choose the level of difficulty (1=Easy/2=Medium/3=Hard): "))
     except:
         print("Invalid choice! Level automatic choosing HARDCORE MODE!")
         print("IF YOU LOSE, YOUR PC WILL BROKEN!")
-        lots_of_glasses = 100 # hardcore mode
+        lots_of_glasses = 100
         dare_condition = True
     else:
         dare_condition = False
@@ -50,42 +49,50 @@ while retry:
                 {glass_number}
                 
     """)
+    
+    chance = 0
+    while chance < 3:
+        print("Devil says: The ball is in glass", devil_says)
 
-    print("Devil says: The ball is in glass", devil_says)
+        makesure = True
+        while makesure:
+            choose_glass = int(input("Where is the glass containing the ball?: "))
 
-    makesure = True
+            user_makesure = input("Are you sure you want to choose this glass? (yes/no): ")
 
-    while makesure:
-        choose_glass = int(input("Where is the glass containing the ball?: "))
+            if(user_makesure.lower() == "yes" or user_makesure.lower() == "y"):
+                makesure = False
+            else:
+                print("Please choose the glass again!")
 
-        user_makesure = input("Are you sure you want to choose this glass? (yes/no): ")
+        if(choose_glass != glass):
+            chance+=1
 
-        if(user_makesure.lower() == "yes" or user_makesure.lower() == "y"):
-            makesure = False
+            if(chance == 3):
+                print(f"""
+        Sorry! You have lost the game! The ball was in glass
+
+                {glass_order}
+                {glass_number}
+
+        """)
+            print(f"Your chance {chance}/3")
+
+            if(dare_condition):
+                print("Your PC is broken!")
+                while True:
+                    random_dare_number = random.randint(1, 99)
+                    print(f"  L O S E R        {random_dare_number}%                 \n             :(\n {n_user}\n")
         else:
-            print("Please choose the glass again!")
+            print(f"""
+    Congratulations! You have won the game!
 
-    if(choose_glass == glass):
-        print(f"""
-Congratulations! You have won the game!
-
-            {glass_order}
-            {glass_number}
-                            
-    """)
-    else:
-        print(f"""
-Sorry! You have lost the game! The ball was in glass
-
-            {glass_order}
-            {glass_number}
-
-    """)
-        if(dare_condition):
-            print("Your PC is broken!")
-            while True:
-                random_dare_number = random.randint(1, 99)
-                print(f"  L O S E R        {random_dare_number}%                 \n             :(\n {n_user}\n")
+                {glass_order}
+                {glass_number}
+                                
+        """)
+            break
+        
     user_retry = input("Do you want to play again? (yes/no): ")
     if(user_retry.lower() == "yes" or user_retry.lower() == "y"):
         retry = True
