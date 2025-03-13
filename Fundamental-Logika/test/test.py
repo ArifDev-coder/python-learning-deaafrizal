@@ -49,3 +49,13 @@
 
 
 
+n_user = input("Enter the username: ")
+
+shape = "*"*5
+
+name_title = str(shape + " Hello " + n_user.capitalize() + " Welcome to Zarick Games! " + shape)
+long_title = len(name_title)
+
+print(shape * long_title)
+print(name_title)
+print(shape * long_title)

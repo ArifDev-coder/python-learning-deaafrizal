@@ -1,102 +1,102 @@
 import random
 
-n_user = input("Enter the username: ")
+def print_title(n_user):
+    shape = "="
+    shape_title = shape * 5
+    name_title = f"{shape_title} Hello {n_user.capitalize()} Welcome to Zarick Games! {shape_title}"
+    long_title = len(name_title)
 
-name_title = str("Hello " + n_user.capitalize() + " Welcome to Zarick Games!")
+    print(shape * long_title)
+    print(name_title)
+    print(shape * long_title)
 
-print("*" *(len(name_title)+12))
-print("*" * 5, name_title, "*" * 5)
-print("*" *(len(name_title)+12))
-
-retry = True
-while retry:
+def get_level():
     try:
         choose_level = int(input("Choose the level of difficulty (1=Easy/2=Medium/3=Hard): "))
+        if choose_level == 1:
+            return 5, False
+        elif choose_level == 2:
+            return 10, False
+        elif choose_level == 3:
+            return 20, False
+        else:
+            raise ValueError
     except:
         print("Invalid choice! Level automatic choosing HARDCORE MODE!")
-        print("IF YOU LOSE, YOUR PC WILL BROKEN!")
-        lots_of_glasses = 100
-        dare_condition = True
-    else:
-        dare_condition = False
-        lots_of_glasses = 0
-        if((choose_level) == 1):
-            lots_of_glasses = 5
-        elif(choose_level == 2):
-            lots_of_glasses = 10
-        elif(choose_level == 3):
-            lots_of_glasses = 20
+        print("IF YOU LOSE, YOUR SYSTEM WILL DIE! :(")
+        return 100, True
 
-    glass_number = " ".join([str(i).rjust(3) for i in range(1, lots_of_glasses + 1)])
+def play_game(n_user):
+    retry = True
+    while retry:
+        lots_of_glasses, dare_condition = get_level()
+        glass_number = " ".join([str(i).rjust(3) for i in range(1, lots_of_glasses + 1)])
+        devil_says = random.randint(1, 100)
+        glass = random.randint(1, lots_of_glasses)
 
-    devil_says = random.randint(1, 100)
-    glass = random.randint(1, lots_of_glasses)
+        glass_shape = "|_|"
+        empty_glass = [glass_shape] * lots_of_glasses
+        glass_order = empty_glass.copy()
+        glass_order[glass - 1] = "|o|"
+        glass_order = " ".join(glass_order)
+        empty_glass = " ".join(empty_glass)
 
-    print(glass)
+        print(f"""
+        Take a look at the glass below!
 
-    glass_shape = "|_|"
-    empty_glass = [glass_shape] * lots_of_glasses # this should still be empty
-    glass_order = empty_glass.copy() # it's a new place for the ball
+                    {empty_glass}
+                    {glass_number}
+                    
+        """)
 
-    glass_order[glass -1] = "|o|"
-    glass_order = " ".join(glass_order)
-    empty_glass = " ".join(empty_glass)
+        chance = 0
+        while chance < 3:
+            print("Devil says: The ball is in glass", devil_says)
 
-    print(f"""
-    Take a look at the glass below!
+            makesure = True
+            while makesure:
+                choose_glass = int(input("Where is the glass containing the ball?: "))
+                user_makesure = input("Are you sure you want to choose this glass? (yes/no): ")
 
-                {empty_glass}
-                {glass_number}
-                
-    """)
-    
-    chance = 0
-    while chance < 3:
-        print("Devil says: The ball is in glass", devil_says)
+                if user_makesure.lower() in ["yes", "y"]:
+                    makesure = False
+                else:
+                    print("Please choose the glass again!")
 
-        makesure = True
-        while makesure:
-            choose_glass = int(input("Where is the glass containing the ball?: "))
+            if choose_glass != glass:
+                chance += 1
+                if chance == 3:
+                    print(f"""
+            Sorry! You have lost the game! The ball was in glass
 
-            user_makesure = input("Are you sure you want to choose this glass? (yes/no): ")
+                    {glass_order}
+                    {glass_number}
 
-            if(user_makesure.lower() == "yes" or user_makesure.lower() == "y"):
-                makesure = False
+            """)
+                print(f"Your chance {chance}/3")
+
+                if dare_condition:
+                    print("Your PC is broken!")
+                    while True:
+                        random_dare_number = random.randint(1, 99)
+                        print(f"  L O S E R        {random_dare_number}%                 \n             :(\n {n_user}\n")
             else:
-                print("Please choose the glass again!")
-
-        if(choose_glass != glass):
-            chance+=1
-
-            if(chance == 3):
                 print(f"""
-        Sorry! You have lost the game! The ball was in glass
+        Congratulations! You have won the game!
 
-                {glass_order}
-                {glass_number}
+                    {glass_order}
+                    {glass_number}
+                                    
+            """)
+                break
 
-        """)
-            print(f"Your chance {chance}/3")
+        user_retry = input("Do you want to play again? (yes/no): ")
+        retry = user_retry.lower() in ["yes", "y"]
 
-            if(dare_condition):
-                print("Your PC is broken!")
-                while True:
-                    random_dare_number = random.randint(1, 99)
-                    print(f"  L O S E R        {random_dare_number}%                 \n             :(\n {n_user}\n")
-        else:
-            print(f"""
-    Congratulations! You have won the game!
+    print("Thank you for playing the Zarick Games! Have a nice day!")
+    print("copyright © 2025 Zarick Co. All rights reserved.\n")
 
-                {glass_order}
-                {glass_number}
-                                
-        """)
-            break
-        
-    user_retry = input("Do you want to play again? (yes/no): ")
-    if(user_retry.lower() == "yes" or user_retry.lower() == "y"):
-        retry = True
-    else:
-        retry = False
-        print("Thank you for playing the Zarick Games! Have a nice day!")
-        print("copyright © 2025 Zarick Co. All rights reserved.\n")
+if __name__ == "__main__":
+    n_user = input("Enter the username: ")
+    print_title(n_user)
+    play_game(n_user)
