@@ -49,13 +49,16 @@
 
 
 
-n_user = input("Enter the username: ")
+# n_user = input("Enter the username: ")
 
-shape = "*"*5
+# shape = "*"*5
 
-name_title = str(shape + " Hello " + n_user.capitalize() + " Welcome to Zarick Games! " + shape)
-long_title = len(name_title)
+# name_title = str(shape + " Hello " + n_user.capitalize() + " Welcome to Zarick Games! " + shape)
+# long_title = len(name_title)
 
-print(shape * long_title)
-print(name_title)
-print(shape * long_title)
+# print(shape * long_title)
+# print(name_title)
+# print(shape * long_title)
+
+for i in range(5):
+    print("*" * ((i%3)+1))
