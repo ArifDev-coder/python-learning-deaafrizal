@@ -1,18 +1,24 @@
 from libs import welcome as welcome_message
 from libs import helo as hello_region
 
-region = str(input("Enter your region: "))
+def main():
+    try:
+        region = str(input("Enter your region: "))
 
-print(welcome_message("Arif"))
+        print(welcome_message("Arif"))
 
-while True:
-    out = hello_region(region)
-    if(out != "Unknow Region"):
-        print(out)
-    else:
-        print(out)
-        break
+        while True:
+            out = hello_region(region)
+            if out == "Unknown Region":
+                print(out)
+                break
+            else:
+                print(out)
+    except KeyboardInterrupt:
+        print("\nGoodbye!")
         
+if __name__ == "__main__":
+    main()
 
 # x = 1
 # while x <= 100:

@@ -15,5 +15,6 @@ def helo(region_name):
         message = f"Hello World! Today is {dtnw} in {reg}           ( Ctr + C for Exit )"
         return message
     except:
-        return "Unknow Region"
+        print(f"Region Not Found : {region_name}")
+        return "Unknown Region"
     
