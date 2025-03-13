@@ -11,3 +11,6 @@ def welcome_message(name):
     print(shape * long_title)
     print(pc_name_title)
     print(shape * long_title)
+
+if __name__ == "__main__":
+    welcome_message()
