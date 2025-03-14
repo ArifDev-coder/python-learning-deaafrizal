@@ -1,6 +1,5 @@
 import socket
 import random
-import sys
 
 from time import sleep
 from loading import loading

@@ -1,6 +1,6 @@
 from source import play_game
 from source import welcome_message as welcome
-from source import loading as load
+from source.loading import loading
 
 def options():
     while True:
@@ -10,9 +10,9 @@ def options():
             play_game.play_game()
         elif opt == 2:
             print("Face Detection is under development")
-            load.loading()
+            loading()
         elif opt == 3:
-            load.loading()
+            loading()
             exit()
 
 def main():
