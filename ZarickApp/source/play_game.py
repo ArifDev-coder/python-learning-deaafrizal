@@ -2,7 +2,7 @@ import socket
 import random
 
 from time import sleep
-from loading import loading
+from source.loading import loading
 
 pc_name = socket.gethostname()
 
