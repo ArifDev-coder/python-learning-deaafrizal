@@ -9,13 +9,8 @@ def options():
         if opt == 1:
             pg.play_game()
         elif opt == 2:
-<<<<<<< HEAD
             print("Face Detection is under development")
             loading()
-=======
-            print("Zarick Face Detection")
-            load.loading()
->>>>>>> f45ce847f3b22083856d644ae13b2f2b70499e57
         elif opt == 3:
             loading()
             exit()
