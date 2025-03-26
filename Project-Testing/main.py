@@ -3,7 +3,6 @@ import cv2
 face_ref = cv2.CascadeClassifier('face_ref.xml')
 camera = cv2.VideoCapture(0)
 
-
 def deteksi_wajah(frame):
     optimaze_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_ref.detectMultiScale(optimaze_frame, scaleFactor=1.3, minSize=(500, 500), minNeighbors=5)
